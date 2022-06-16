@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
+//열거 클래스
+//내부의 각각의 상수(constant)들은 오브젝트이다.
 enum class ActionType{
     PLUS,MINUS
 }
@@ -39,9 +41,15 @@ class MyNumberViewModel:ViewModel() {
 
     fun updateValue(actionType : ActionType, input: Int){
         when(actionType){
-            ActionType.PLUS -> _currentValue.value?.plus(input)
+            ActionType.PLUS -> {
+                _currentValue.value = _currentValue.value?.plus(input)
+                Log.d(TAG,"MyNumberViewModel - updateValue_PLUS - input : $input , _currentValue :  ${_currentValue.value}")
+            }
 
-            ActionType.MINUS -> _currentValue.value?.minus(input)
+            ActionType.MINUS ->{
+                _currentValue.value = _currentValue.value?.minus(input)
+                Log.d(TAG,"MyNumberViewModel - updateValue_MINUS - input : $input , _currentValue :  ${_currentValue.value}")
+            }
         }
     }
 }
