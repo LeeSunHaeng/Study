@@ -2,13 +2,27 @@ package com.sunhange.androidstudy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.sunhange.androidstudy.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    //lateinit = 초기화를 늦추는
+    //코틀린에서 초기화란 값을 집어넣는 행위로 볼 수 있다.
+    private lateinit var binding : ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.tvName2.setText("안녕하세요 이선행 입니다.")
+        binding.tvContent.setText("기본공부 확실히")
+
+        //findViewById <-원래는 이걸 써야했는데 viewBinding을 사용하면 사용하지 않아도 됨
+
+
         //액티비티가 생성될 때 호출되어 사용자 인터페이스 초기화 할 때 이곳에 구현
         println("sunhangLee onCreate!!")
+
     }
 
     override fun onStart() {
