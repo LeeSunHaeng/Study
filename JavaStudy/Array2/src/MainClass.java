@@ -4,16 +4,16 @@ public class MainClass {
 
 	public static void main(String[] args) {
 	/*
-	 Array : 같은 자료형의 묶은 변수들.
-	 		 접근 및 관리는 index로 된다. 0 ~ Arrat.length-1
+	 Array : 媛숈� �옄猷뚰삎�쓽 臾띠� 蹂��닔�뱾.
+	 		 �젒洹� 諛� 愿�由щ뒗 index濡� �맂�떎. 0 ~ Arrat.length-1
 	 		 int Arr[] = new int[5]; //0 ~ 4
-	 		 동적으로 할당한 후에 정적으로 사용
+	 		 �룞�쟻�쑝濡� �븷�떦�븳 �썑�뿉 �젙�쟻�쑝濡� �궗�슜
 	 		 	 		 
-	 		 1차원 0-0-0-0-0
+	 		 1李⑥썝 0-0-0-0-0
 	 		 int Array[] = {1, 2, 3, 4, 5};
 	 		 
 
-	 		 2차원 0-0-0-0-0
+	 		 2李⑥썝 0-0-0-0-0
 	 		      0-0-0-0-0
 	 		      0-0-0-0-0
 	 		      0-0-0-0-0
@@ -24,7 +24,7 @@ public class MainClass {
 	 		       0-0-0-0
 	 		       0-0-0-0
 	 		       0-0-0-0
-	 		 //초기화
+	 		 //珥덇린�솕
 	 		 int Array2[][] = {
 	 		 {1, 2, 3, 4},
 	 		 {5, 6, 7, 8},
@@ -51,7 +51,7 @@ public class MainClass {
 		
 		System.out.println(Arrays.toString(Array2[0]));
 		
-		//2차원 배열의 초기화
+		//2李⑥썝 諛곗뿴�쓽 珥덇린�솕
 		
 		int Array23[][] = {
 				{1, 2},
@@ -64,6 +64,8 @@ public class MainClass {
 		
 		System.out.println(Array23.length);
 		System.out.println(Array23[0].length);
+		System.out.println(Array23[2].length);
+		System.out.println(Array23[3].length);
 		
 	}
 
