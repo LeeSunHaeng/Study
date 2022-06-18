@@ -66,6 +66,12 @@ public class MainClass {
 		System.out.println(Array23[0].length);
 		System.out.println(Array23[2].length);
 		System.out.println(Array23[3].length);
+		System.out.println(Array23[0].length);
+		System.out.println(Array23[2].length);
+		System.out.println(Array23[3].length);
+		System.out.println(Array23[0].length);
+		System.out.println(Array23[2].length);
+		System.out.println(Array23[3].length);
 		
 	}
 
