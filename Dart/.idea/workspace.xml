@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b174011-057d-40b7-bb9c-1415404ac6fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/DartStudy03(오퍼레이터,논리).dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DartStudy05(if, switch, for, while).dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DartStudy06(enum).dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DartStudy07.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DartStudy03.dart" beforeDir="false" afterPath="$PROJECT_DIR$/DartStudy04.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DartStudy04.dart" beforeDir="false" afterPath="$PROJECT_DIR$/DartStudy04(List, Map, Set).dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,33 +44,39 @@
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
-  <component name="RunManager" selected="Dart Command Line App.DartStudy04.dart">
-    <configuration name="DartStudy01(print,var).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/DartStudy01(print,var).dart" />
-      <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="DartStudy02(Type,Dynamic,final,const).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/DartStudy02(Type,Dynamic,final,const).dart" />
-      <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Dart Command Line App.DartStudy07(function, Operation).dart">
     <configuration name="DartStudy03(오퍼레이터,논리).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
       <option name="filePath" value="$PROJECT_DIR$/DartStudy03(오퍼레이터,논리).dart" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="DartStudy04.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/DartStudy04.dart" />
+    <configuration name="DartStudy04(List, Map, Set).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/DartStudy04(List, Map, Set).dart" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="DartStudy05(if, switch, for, while).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/DartStudy05(if, switch, for, while).dart" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="DartStudy06(enum).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/DartStudy06(enum).dart" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="DartStudy07(function, Operation).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/DartStudy07(function, Operation).dart" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Dart Command Line App.DartStudy04.dart" />
+        <item itemvalue="Dart Command Line App.DartStudy07(function, Operation).dart" />
+        <item itemvalue="Dart Command Line App.DartStudy06(enum).dart" />
+        <item itemvalue="Dart Command Line App.DartStudy05(if, switch, for, while).dart" />
+        <item itemvalue="Dart Command Line App.DartStudy04(List, Map, Set).dart" />
         <item itemvalue="Dart Command Line App.DartStudy03(오퍼레이터,논리).dart" />
-        <item itemvalue="Dart Command Line App.DartStudy02(Type,Dynamic,final,const).dart" />
-        <item itemvalue="Dart Command Line App.DartStudy01(print,var).dart" />
       </list>
     </recent_temporary>
   </component>
@@ -93,5 +101,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

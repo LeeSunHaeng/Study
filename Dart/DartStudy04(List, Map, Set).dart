@@ -64,5 +64,23 @@ void main() {
   print(isHarry.keys);
   print(isHarry.values);
 
-  //Set
+  // Set
+  // List는 중복값을 저장할 수 있고 Set은 중복값을 저장할 수 없음
+  final Set<String> names = {
+    'Code',
+    'Flutter',
+    'Black',
+    'Flutter'
+  };
+
+   print(names);
+
+   names.add('Jenny');
+   print(names);
+
+   names.remove('Jenny');
+   print(names);
+
+   print(names.contains('Flutter'));
+
 }
