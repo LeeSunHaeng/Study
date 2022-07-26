@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b174011-057d-40b7-bb9c-1415404ac6fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/DartStudy08(Class).dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DartStudy09(Inheritance[상속]).dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DartStudy10(override).dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DartStudy11(Static).dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DartStudy12(interface).dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DartStudy13(Generic,OOP).dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DartStudy14.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DartStudy15(Where).dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DartStudy16(reduce,ford,casecade).dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DartStudy17(함수형 프로그래밍 최종).dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DartStudy18(AsyncProgramming,Future.delayed).dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DartStudy19(async,await).dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DartStudy20(Future return).dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DartStudy21(Stream).dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DartStudy22.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DartStudy14.dart" beforeDir="false" afterPath="$PROJECT_DIR$/DartStudy14(Mapping).dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,39 +57,39 @@
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
-  <component name="RunManager" selected="Dart Command Line App.DartStudy14.dart">
-    <configuration name="DartStudy10(override).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/DartStudy10(override).dart" />
+  <component name="RunManager" selected="Dart Command Line App.DartStudy22.dart">
+    <configuration name="DartStudy18(AsyncProgramming,Future.delayed).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/DartStudy18(AsyncProgramming,Future.delayed).dart" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="DartStudy11(Static).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/DartStudy11(Static).dart" />
+    <configuration name="DartStudy19(async,await).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/DartStudy19(async,await).dart" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="DartStudy12(interface).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/DartStudy12(interface).dart" />
+    <configuration name="DartStudy20(Future return).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/DartStudy20(Future return).dart" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="DartStudy13(Generic,OOP).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/DartStudy13(Generic,OOP).dart" />
+    <configuration name="DartStudy21(Stream).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/DartStudy21(Stream).dart" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="DartStudy14.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/DartStudy14.dart" />
+    <configuration name="DartStudy22.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/DartStudy22.dart" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Dart Command Line App.DartStudy14.dart" />
-        <item itemvalue="Dart Command Line App.DartStudy13(Generic,OOP).dart" />
-        <item itemvalue="Dart Command Line App.DartStudy12(interface).dart" />
-        <item itemvalue="Dart Command Line App.DartStudy11(Static).dart" />
-        <item itemvalue="Dart Command Line App.DartStudy10(override).dart" />
+        <item itemvalue="Dart Command Line App.DartStudy22.dart" />
+        <item itemvalue="Dart Command Line App.DartStudy21(Stream).dart" />
+        <item itemvalue="Dart Command Line App.DartStudy20(Future return).dart" />
+        <item itemvalue="Dart Command Line App.DartStudy19(async,await).dart" />
+        <item itemvalue="Dart Command Line App.DartStudy18(AsyncProgramming,Future.delayed).dart" />
       </list>
     </recent_temporary>
   </component>
