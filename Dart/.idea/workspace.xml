@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b174011-057d-40b7-bb9c-1415404ac6fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/DartStudy15(Where).dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DartStudy16(reduce,ford,casecade).dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DartStudy17(함수형 프로그래밍 최종).dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DartStudy18(AsyncProgramming,Future.delayed).dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DartStudy19(async,await).dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DartStudy20(Future return).dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DartStudy21(Stream).dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DartStudy22.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DartStudy14.dart" beforeDir="false" afterPath="$PROJECT_DIR$/DartStudy14(Mapping).dart" afterDir="false" />
-    </list>
+    <list default="true" id="2b174011-057d-40b7-bb9c-1415404ac6fd" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
