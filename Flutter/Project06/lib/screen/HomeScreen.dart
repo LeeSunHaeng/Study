@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:project06/screen/cam_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -8,12 +9,18 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[100],
+      //backgroundColor: Colors.blue,
       body: SafeArea(
-        child: Column(
-          children: [
-            _Logo(),
-            _Image(),
-          ],
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Expanded(child: _Logo()),
+              Expanded(child: _Image()),
+              Expanded(child: _EntryButton()),
+            ],
+          ),
         ),
       ),
     );
@@ -47,12 +54,13 @@ class _Logo extends StatelessWidget {
                 color: Colors.white,
                 size: 40.0,
               ),
+              SizedBox(
+                width: 12.0,
+              ),
               Text(
                 'LIVE',
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30.0,
-                ),
+                    color: Colors.white, fontSize: 30.0, letterSpacing: 4.0),
               )
             ],
           ),
@@ -61,14 +69,39 @@ class _Logo extends StatelessWidget {
     );
   }
 }
+
 class _Image extends StatelessWidget {
   const _Image({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Image.asset('asset/img/home_img.png',
+      child: Image.asset(
+        'asset/img/home_img.png',
       ),
+    );
+  }
+}
+
+class _EntryButton extends StatelessWidget {
+  const _EntryButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => CamScreen()
+              ),
+            );
+          },
+          child: Text('입장하기'),
+        ),
+      ],
     );
   }
 }
