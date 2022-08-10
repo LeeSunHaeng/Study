@@ -6,22 +6,32 @@ part of 'RestClient.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-News _$NewsFromJson(Map<String, dynamic> json) => News(
+PracticeRequest _$PracticeRequestFromJson(Map<String, dynamic> json) =>
+    PracticeRequest(
       serviceKey: json['serviceKey'] as String?,
-      returnType: json['returnType'] as String?,
-      numOfRows: json['numOfRows'] as String?,
-      pageNo: json['pageNo'] as String?,
       sidoName: json['sidoName'] as String?,
-      ver: json['ver'] as String?,
     );
 
-Map<String, dynamic> _$NewsToJson(News instance) => <String, dynamic>{
+Map<String, dynamic> _$PracticeRequestToJson(PracticeRequest instance) =>
+    <String, dynamic>{
       'serviceKey': instance.serviceKey,
-      'returnType': instance.returnType,
-      'numOfRows': instance.numOfRows,
-      'pageNo': instance.pageNo,
       'sidoName': instance.sidoName,
-      'ver': instance.ver,
+    };
+
+pmData _$pmDataFromJson(Map<String, dynamic> json) => pmData(
+      stationName: json['stationName'] as String?,
+      sidoName: json['sidoName'] as String?,
+      dataTime: json['dataTime'] as String?,
+      o3Value: json['o3Value'] as String?,
+      pm10Value: json['pm10Value'] as String?,
+    );
+
+Map<String, dynamic> _$pmDataToJson(pmData instance) => <String, dynamic>{
+      'stationName': instance.stationName,
+      'sidoName': instance.sidoName,
+      'dataTime': instance.dataTime,
+      'o3Value': instance.o3Value,
+      'pm10Value': instance.pm10Value,
     };
 
 // **************************************************************************
@@ -38,33 +48,31 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
-  Future<List<Map<String, dynamic>>> getData() async {
+  Future<List<pmData>> getData(serviceKey, sidoName, returnType) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'serviceKey': serviceKey,
+      r'sidoName': sidoName,
+      r'returnType': returnType
+    };
     final _headers = <String, dynamic>{
-      r'Content-Language': 'ko-KR',
-      r'Access-Control-Allow-Origin': '*',
-      r'Content-Encoding': 'gzip',
-      r'Content-Type': 'application/json;charset=UTF-8',
-      r'Content-Length': '610',
-      r'Date': 'Thu, 04 Aug 2022 07:08:42 GMT',
-      r'Server': 'NIA API Server'
+      r'Accept': 'application/json',
+      r'content-type': 'application/json'
     };
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(
-        _setStreamType<List<Map<String, dynamic>>>(Options(
+        _setStreamType<List<pmData>>(Options(
                 method: 'GET',
                 headers: _headers,
                 extra: _extra,
-                contentType: 'application/json;charset=UTF-8')
+                contentType: 'application/json')
             .compose(_dio.options,
                 '/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
-        .map((dynamic i) =>
-            Map<String, dynamic>.fromJson(i as Map<String, dynamic>))
+        .map((dynamic i) => pmData.fromJson(i as Map<String, dynamic>))
         .toList();
     return value;
   }

@@ -4,7 +4,85 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b174011-057d-40b7-bb9c-1415404ac6fd" name="Changes" comment="" />
+    <list default="true" id="ecab93e1-8ae8-429f-88cf-647efc22bff4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Dart23(StudyJson).dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/.metadata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/analysis_options.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/app/src/main/kotlin/com/example/dioapi/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/app/src/main/res/drawable-v21/launch_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/app/src/main/res/drawable/launch_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/app/src/main/res/values-night/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/app/src/profile/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/android/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Flutter/Debug.xcconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Flutter/Release.xcconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/AppDelegate.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Base.lproj/LaunchScreen.storyboard" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Base.lproj/Main.storyboard" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/ios/Runner/Runner-Bridging-Header.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/lib/const/data.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/lib/main.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/lib/screen/HomeScreen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/pubspec.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/pubspec.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/DioApi/test/widget_test.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flutter/Retrofit5/lib/const/data.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dart.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Flutter/Retrofit5/lib/Retrofit/RestClient.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../Flutter/Retrofit5/lib/Retrofit/RestClient.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Flutter/Retrofit5/lib/Retrofit/RestClient.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../Flutter/Retrofit5/lib/Retrofit/RestClient.g.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Flutter/Retrofit5/lib/screen/RestScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../Flutter/Retrofit5/lib/screen/RestScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Flutter/Retrofit5/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../Flutter/Retrofit5/pubspec.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,15 +98,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
-  <component name="ProjectId" id="2CHqns4loHplNDnZHtrtnt0mKCB" />
+  <component name="ProjectId" id="2CvLhL9wtKQjxAukM5jVwIIm9Fb" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -46,50 +116,26 @@
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
-  <component name="RunManager" selected="Dart Command Line App.DartStudy22.dart">
-    <configuration name="DartStudy18(AsyncProgramming,Future.delayed).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/DartStudy18(AsyncProgramming,Future.delayed).dart" />
-      <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="DartStudy19(async,await).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/DartStudy19(async,await).dart" />
-      <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="DartStudy20(Future return).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/DartStudy20(Future return).dart" />
-      <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="DartStudy21(Stream).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/DartStudy21(Stream).dart" />
-      <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="DartStudy22.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/DartStudy22.dart" />
+  <component name="RunManager">
+    <configuration name="Dart23(StudyJson).dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/Dart23(StudyJson).dart" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Dart Command Line App.DartStudy22.dart" />
-        <item itemvalue="Dart Command Line App.DartStudy21(Stream).dart" />
-        <item itemvalue="Dart Command Line App.DartStudy20(Future return).dart" />
-        <item itemvalue="Dart Command Line App.DartStudy19(async,await).dart" />
-        <item itemvalue="Dart Command Line App.DartStudy18(AsyncProgramming,Future.delayed).dart" />
+        <item itemvalue="Dart Command Line App.Dart23(StudyJson).dart" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2b174011-057d-40b7-bb9c-1415404ac6fd" name="Changes" comment="" />
-      <created>1658470028403</created>
+      <changelist id="ecab93e1-8ae8-429f-88cf-647efc22bff4" name="Changes" comment="" />
+      <created>1659678230002</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1658470028403</updated>
+      <updated>1659678230002</updated>
     </task>
     <servers />
   </component>
@@ -103,6 +149,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
