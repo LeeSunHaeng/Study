@@ -1,9 +1,11 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/model/toprated/toprated.dart';
+import 'package:netflix/provider/movie_provider.dart';
+
 import 'package:netflix/retrofit/RestClient.dart';
 import 'package:netflix/screen/top_detail_screnn.dart';
+import 'package:provider/provider.dart';
 
 class CircleSlider extends StatefulWidget {
   const CircleSlider({Key? key}) : super(key: key);
@@ -14,20 +16,12 @@ class CircleSlider extends StatefulWidget {
 
 class _CircleSliderState extends State<CircleSlider> {
   late RestClient client;
-  late Future<TopRated> TRated;
-
-  Future<TopRated> getTopRated() async {
-    // Dio dio = Dio();
-    // client = RestClient(dio);
-    var resp = await RestClient.create().getTopRated(
-        'ce16f7da30a47ba16d9f038d895318bd', 'ko-KR', 1, 'KR');
-    return resp;
-  }
+  late MovieProvider _topRatedProvider;
 
   @override
   void initState() {
     super.initState();
-    TRated = getTopRated();
+
   }
 
   @override
@@ -38,26 +32,23 @@ class _CircleSliderState extends State<CircleSlider> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('영화 순위'),
-          FutureBuilder<TopRated>(
-            future: TRated,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.none ||
-                  snapshot.connectionState == ConnectionState.waiting) {
-                return Container(
-                    height: 120,
-                    padding: EdgeInsets.only(right: 10),
-                    child: CircularProgressIndicator());
-              } else {
-                return Container(
-                    height: 120,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children:
-                          makeCircleImages(context, snapshot.data!.results),
-                    ));
-              }
-            },
-          )
+          Consumer<MovieProvider>(builder: (context, provider, widget) {
+            var movies = provider.TopRatedMovies;
+            if (movies != null && movies.length > 0) {
+              return Container(
+                  height: 120,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: makeCircleImages(context, movies),
+                  ));
+            } else {
+              return Container(
+                  height: 80,
+                  width: 80,
+                  padding: EdgeInsets.only(right: 10),
+                  child: CircularProgressIndicator());
+            }
+          })
         ],
       ),
     );

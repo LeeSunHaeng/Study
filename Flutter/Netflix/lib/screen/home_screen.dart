@@ -5,11 +5,10 @@ import 'package:netflix/widget/box_slider.dart';
 import 'package:netflix/widget/carousel_silder.dart';
 import 'package:netflix/widget/circle_slider.dart';
 import 'package:netflix/widget/pop_box_slider.dart';
-import 'package:netflix/widget/testcarousel_slider.dart';
+import 'package:provider/provider.dart';
 
-import '../model/model_movie.dart';
-import '../model/nplaying/nowplaying.dart';
-import '../retrofit/RestClient.dart';
+import '../provider/movie_provider.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,46 +18,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late RestClient client;
-  late Future<NowPlaying> FNPMovies;
-  final List<Movie> movies = [
-    Movie.fromMap(
-        {
-          'title' : '사랑의 불시착',
-          'keyword' : '사랑/로맨스/판타지',
-          'poster' : 'test_movie_1.png',
-          'like' : false
-        }
-    ),
-    Movie.fromMap(
-        {
-          'title' : '사랑의 불시착',
-          'keyword' : '사랑/로맨스/판타지',
-          'poster' : 'test_movie_1.png',
-          'like' : false
-        }
-    ),Movie.fromMap(
-        {
-          'title' : '바보의 불시착',
-          'keyword' : '사랑/로맨스/판타지',
-          'poster' : 'test_movie_1.png',
-          'like' : false
-        }
-    ),
-    Movie.fromMap(
-        {
-          'title' : '사랑의 불시착',
-          'keyword' : '사랑/로맨스/판타지',
-          'poster' : 'test_movie_1.png',
-          'like' : false
-        }
-    ),
-
-  ];
+  late MovieProvider _movieProvider;
 
   @override
   void initState() {
     super.initState();
+
+    _movieProvider = Provider.of<MovieProvider>(context, listen: false);
+    _movieProvider.getMovie();
 
   }
 
@@ -68,7 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         Stack(
           children: [
-           //TestCarouselImage(),
             CarouselImage(),
             TopBar(),
           ],
