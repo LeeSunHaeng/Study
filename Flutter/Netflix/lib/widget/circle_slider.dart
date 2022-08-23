@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:netflix/model/toprated/toprated.dart';
 import 'package:netflix/provider/movie_provider.dart';
 
 import 'package:netflix/retrofit/RestClient.dart';
-import 'package:netflix/screen/top_detail_screnn.dart';
+import 'package:netflix/screen/detail_screen.dart';
 import 'package:provider/provider.dart';
+
+import '../model/movieModel/movie.dart';
 
 class CircleSlider extends StatefulWidget {
   const CircleSlider({Key? key}) : super(key: key);
@@ -56,7 +57,7 @@ class _CircleSliderState extends State<CircleSlider> {
 }
 
 List<Widget> makeCircleImages(
-    BuildContext context, List<TopRatedResults>? movies) {
+    BuildContext context, List<Movies>? movies) {
   List<Widget> result = [];
   for (int i = 0; i < movies!.length; i++) {
     result.add(InkWell(
@@ -65,7 +66,7 @@ List<Widget> makeCircleImages(
           MaterialPageRoute(
               fullscreenDialog: true,
               builder: (BuildContext context) {
-                return TopDetailScreen(movie: movies[i]);
+                return DetailScreen(movie: movies[i],TakeContext: context,);
               }),
         );
       },

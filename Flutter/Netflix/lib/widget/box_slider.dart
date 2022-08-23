@@ -2,35 +2,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/provider/movie_provider.dart';
-import 'package:netflix/retrofit/RestClient.dart';
 import 'package:provider/provider.dart';
-import '../model/nplaying/nowplaying.dart';
+import '../model/movieModel/movie.dart';
 import '../screen/detail_screen.dart';
 
-class BoxSlider extends StatefulWidget {
+class BoxSlider extends StatelessWidget {
   const BoxSlider({Key? key}) : super(key: key);
 
   @override
-  State<BoxSlider> createState() => _BoxSliderState();
-}
-
-class _BoxSliderState extends State<BoxSlider> {
-  late RestClient client;
-  late Future<NowPlaying> GNP;
-  // late MovieProvider _nowPlayingProvider;
-
-
-  @override
-  void initState() {
-    super.initState();
-    // _nowPlayingProvider = Provider.of<MovieProvider>(context, listen: false);
-    // _nowPlayingProvider.getNowPlaying();
-  }
-
-  @override
   Widget build(BuildContext context) {
-
-
     return Container(
       padding: EdgeInsets.all(7),
       child: Column(
@@ -46,7 +26,7 @@ class _BoxSliderState extends State<BoxSlider> {
                     height: 120,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
-                      children: makeBoxImages(context,provider.NowPlayingMovies),
+                      children: makeBoxImages(context, provider.NowPlayingMovies),
                     ),
                   );
                 }
@@ -66,7 +46,8 @@ class _BoxSliderState extends State<BoxSlider> {
 }
 
 List<Widget> makeBoxImages(
-    BuildContext context, List<NowPlayingResults>? movies) {
+    BuildContext context, List<Movies>? movies) {
+
   List<Widget> result = [];
   for (int i = 0; i < movies!.length; i++) {
     result.add(InkWell(
@@ -75,7 +56,7 @@ List<Widget> makeBoxImages(
           MaterialPageRoute(
               fullscreenDialog: true,
               builder: (BuildContext context) {
-                return DetailScreen(movie: movies[i]);
+                return DetailScreen(movie: movies[i],TakeContext: context,);
               }),
         );
       },

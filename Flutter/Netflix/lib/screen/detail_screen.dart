@@ -1,13 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:netflix/provider/hive_helper.dart';
+import 'package:provider/provider.dart';
+import 'package:netflix/hive/movie_like_id.dart';
+import 'package:netflix/model/movieModel/movie.dart';
 
-
-import '../model/nplaying/nowplaying.dart';
 
 class DetailScreen extends StatefulWidget {
-  final NowPlayingResults movie;
-  const DetailScreen({required this.movie, Key? key}) : super(key: key);
+  final Movies movie;
+  final BuildContext TakeContext;
+  const DetailScreen({required this.movie, required this.TakeContext, Key? key}) : super(key: key);
+
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();
@@ -16,12 +21,18 @@ class DetailScreen extends StatefulWidget {
 class _DetailScreenState extends State<DetailScreen> {
   bool like = false;
   @override
+
   void initState() {
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+     var provider1 = context.watch<HiveHelper>();
+     var provider2 = context.read<HiveHelper>();
+     print(provider1.likeIdBox!.length);
+     print('가져온 ID : ${widget.movie.id.toString()}');
+     //print(provider.likeIdBox.containsKey(key))
     return Scaffold(
       body: Container(
         child: SafeArea(
@@ -125,66 +136,90 @@ class _DetailScreenState extends State<DetailScreen> {
                 ],
               ),
               Container(
-                color: Colors.black26,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                      child: InkWell(
-                        onTap: () {},
-                        child: Column(
-                          children: [
-                            like ? Icon(Icons.check) : Icon(Icons.add),
-                            Padding(padding: EdgeInsets.all(5)),
-                            Text(
-                              '내가 찜한 콘텐츠',
-                              style: TextStyle(
-                                  fontSize: 11, color: Colors.white60),
+                    color: Colors.black26,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                          child: InkWell(
+                            onTap: () {},
+                            child: Column(
+                              children: [
+                            provider1.likeIdBox!.containsKey(widget.movie.id.toString())
+                                ? IconButton(
+                              icon: Icon(Icons.favorite),
+                              onPressed: () {
+                                provider1.delete(widget.movie.id.toString());
+                              },
                             )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                      child: Container(
-                        child: Column(
-                          children: [
-                            Icon(Icons.thumb_up),
-                            Padding(
-                              padding: EdgeInsets.all(5),
+                                : IconButton(
+                                    onPressed: () {
+                                    provider1.create(
+                                        widget.movie.id.toString(),
+                                        LikeMovies(
+                                          id: widget.movie.id,
+                                          overview: widget.movie.overview,
+                                          poster_path:widget.movie.poster_path,
+                                          release_date: widget.movie.release_date,
+                                          title: widget.movie.title,
+                                          vote_average: widget.movie.vote_average,
+                                        ));
+                                    print('들어가냐? : ${provider1.likeIdBox!.containsKey(widget.movie.id.toString())}');
+
+                                    //provider2.create(movies[provider.index].id.toString(),LikeMovies(id: movies[provider.index].id.toString()));
+                                  },
+                                    icon: Icon(Icons.favorite_border),
                             ),
-                            Text(
-                              '평가',
-                              style: TextStyle(
-                                  fontSize: 11, color: Colors.white60),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                      child: Container(
-                        child: Column(
-                          children: [
-                            Icon(Icons.share),
-                            Padding(
-                              padding: EdgeInsets.all(5),
+                                Text(
+                                  '내가 찜한 콘텐츠',
+                                  style: TextStyle(
+                                      fontSize: 11, color: Colors.white60),
+                                )
+                              ],
                             ),
-                            Text(
-                              '공유',
-                              style: TextStyle(
-                                  fontSize: 11, color: Colors.white60),
-                            )
-                          ],
+                          ),
                         ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                          child: Container(
+                            child: Column(
+                              children: [
+                                Icon(Icons.thumb_up),
+                                Padding(
+                                  padding: EdgeInsets.all(5),
+                                ),
+                                Text(
+                                  '평가',
+                                  style: TextStyle(
+                                      fontSize: 11, color: Colors.white60),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                          child: Container(
+                            child: Column(
+                              children: [
+                                Icon(Icons.share),
+                                Padding(
+                                  padding: EdgeInsets.all(5),
+                                ),
+                                Text(
+                                  '공유',
+                                  style: TextStyle(
+                                      fontSize: 11, color: Colors.white60),
+                                )
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+
               Container(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,

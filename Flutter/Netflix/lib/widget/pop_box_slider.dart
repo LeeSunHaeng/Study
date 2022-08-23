@@ -1,13 +1,10 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:netflix/model/popular/popular.dart';
 import 'package:netflix/provider/movie_provider.dart';
 import 'package:netflix/retrofit/RestClient.dart';
-import 'package:netflix/screen/pop_detail_screnn.dart';
+import 'package:netflix/screen/detail_screen.dart';
 import 'package:provider/provider.dart';
-import '../model/nplaying/nowplaying.dart';
-import '../screen/detail_screen.dart';
+import '../model/movieModel/movie.dart';
 
 class PopBoxSlider extends StatefulWidget {
   const PopBoxSlider({Key? key}) : super(key: key);
@@ -18,21 +15,6 @@ class PopBoxSlider extends StatefulWidget {
 
 class _PopBoxSliderState extends State<PopBoxSlider> {
   late RestClient client;
-  // late Future<Popular> Pop;
-
-  // Future<Popular> getPopular() async {
-  //
-  //   // client = RestClient(dio);
-  //   var resp = await RestClient.create().getPopular(
-  //       'ce16f7da30a47ba16d9f038d895318bd', 'ko-KR', 1, 'KR');
-  //   return resp;
-  // }
-  //
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   Pop = getPopular();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -47,13 +29,44 @@ class _PopBoxSliderState extends State<PopBoxSlider> {
           Consumer<MovieProvider>(builder: (context, provider, widget) {
             var movies = provider.PopularMovies;
             if (movies != null && movies.length > 0) {
+
               return Container(
                 height: 120,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: makePopBoxImages(context, movies),
-                ),
+                child: ListView.builder(
+                    itemCount: provider.PopularMovies.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context,i){
+
+                  return InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            fullscreenDialog: true,
+                            builder: (BuildContext context) {
+                              return DetailScreen(movie: movies[i],TakeContext: context,);
+                            }),
+                      );
+                    },
+                    child: Container(
+                      padding: EdgeInsets.only(right: 10),
+                      child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Image(
+                            image: NetworkImage(
+                                'https://image.tmdb.org/t/p/original${movies[i].poster_path}'),
+                          )),
+                    ),
+                  );
+                }),
               );
+
+              // return Container(
+              //   height: 120,
+              //   child: ListView(
+              //     scrollDirection: Axis.horizontal,
+              //     children: makePopBoxImages(context, movies),
+              //   ),
+              // );
             }else{
               return Container(
                   height: 80,
@@ -68,7 +81,7 @@ class _PopBoxSliderState extends State<PopBoxSlider> {
   }
 }
 
-List<Widget> makePopBoxImages(BuildContext context, List<PopResults>? movies) {
+List<Widget> makePopBoxImages(BuildContext context, List<Movies>? movies) {
   List<Widget> result = [];
   for (int i = 0; i < movies!.length; i++) {
     result.add(InkWell(
@@ -77,7 +90,7 @@ List<Widget> makePopBoxImages(BuildContext context, List<PopResults>? movies) {
           MaterialPageRoute(
               fullscreenDialog: true,
               builder: (BuildContext context) {
-                return PopDetailScreen(movie: movies[i]);
+                return DetailScreen(movie: movies[i],TakeContext: context,);
               }),
         );
       },
@@ -92,6 +105,5 @@ List<Widget> makePopBoxImages(BuildContext context, List<PopResults>? movies) {
       ),
     ));
   }
-  print('box : ${result.length}');
   return result;
 }

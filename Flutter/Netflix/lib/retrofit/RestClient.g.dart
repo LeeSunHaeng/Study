@@ -16,7 +16,7 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
-  Future<NowPlaying> getNowPlaying(apiKey, language, page, region) async {
+  Future<Movie> getNowPlaying(apiKey, language, page, region) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'api_key': apiKey,
@@ -31,7 +31,7 @@ class _RestClient implements RestClient {
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<NowPlaying>(Options(
+        _setStreamType<Movie>(Options(
                 method: 'POST',
                 headers: _headers,
                 extra: _extra,
@@ -39,12 +39,12 @@ class _RestClient implements RestClient {
             .compose(_dio.options, '/now_playing',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = NowPlaying.fromJson(_result.data!);
+    final value = Movie.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<TopRated> getTopRated(apiKey, language, page, region) async {
+  Future<Movie> getTopRated(apiKey, language, page, region) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'api_key': apiKey,
@@ -59,7 +59,7 @@ class _RestClient implements RestClient {
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<TopRated>(Options(
+        _setStreamType<Movie>(Options(
                 method: 'POST',
                 headers: _headers,
                 extra: _extra,
@@ -67,12 +67,12 @@ class _RestClient implements RestClient {
             .compose(_dio.options, '/top_rated',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = TopRated.fromJson(_result.data!);
+    final value = Movie.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<Popular> getPopular(apiKey, language, page, region) async {
+  Future<Movie> getPopular(apiKey, language, page, region) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'api_key': apiKey,
@@ -87,7 +87,7 @@ class _RestClient implements RestClient {
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<Popular>(Options(
+        _setStreamType<Movie>(Options(
                 method: 'POST',
                 headers: _headers,
                 extra: _extra,
@@ -95,12 +95,12 @@ class _RestClient implements RestClient {
             .compose(_dio.options, '/popular',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = Popular.fromJson(_result.data!);
+    final value = Movie.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<Upcoming> getUpcoming(apiKey, language, page, region) async {
+  Future<Movie> getUpcoming(apiKey, language, page, region) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'api_key': apiKey,
@@ -115,7 +115,7 @@ class _RestClient implements RestClient {
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<Upcoming>(Options(
+        _setStreamType<Movie>(Options(
                 method: 'POST',
                 headers: _headers,
                 extra: _extra,
@@ -123,7 +123,7 @@ class _RestClient implements RestClient {
             .compose(_dio.options, '/upcoming',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = Upcoming.fromJson(_result.data!);
+    final value = Movie.fromJson(_result.data!);
     return value;
   }
 

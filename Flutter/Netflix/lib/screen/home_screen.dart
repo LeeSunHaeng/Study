@@ -7,6 +7,7 @@ import 'package:netflix/widget/circle_slider.dart';
 import 'package:netflix/widget/pop_box_slider.dart';
 import 'package:provider/provider.dart';
 
+import '../provider/hive_helper.dart';
 import '../provider/movie_provider.dart';
 
 
@@ -19,12 +20,16 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late MovieProvider _movieProvider;
+  late HiveHelper _hiveHelper;
 
   @override
   void initState() {
     super.initState();
 
-    _movieProvider = Provider.of<MovieProvider>(context, listen: false);
+    _movieProvider = context.read<MovieProvider>();
+    _hiveHelper = context.read<HiveHelper>();
+    // _movieProvider = Provider.of<MovieProvider>(context, listen: false);
+    // _hiveHelper = Provider.of<HiveHelper>(context,listen: false);
     _movieProvider.getMovie();
 
   }

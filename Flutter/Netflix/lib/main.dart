@@ -1,11 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:netflix/provider/hive_helper.dart';
+import 'package:netflix/hive/movie_like_id.dart';
 import 'package:netflix/provider/movie_provider.dart';
 import 'package:netflix/screen/home_screen.dart';
 import 'package:netflix/widget/bottom_bar.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+
+void main() async{
+  await Hive.initFlutter();
+  Hive.registerAdapter(LikeMoviesAdapter());
+  await HiveHelper().openBox();
+
+  runApp(
+      MultiProvider(
+          providers: [
+            ChangeNotifierProvider(
+              create: (BuildContext context) => MovieProvider(),
+            ),
+            ChangeNotifierProvider(
+              create: (BuildContext context) => HiveHelper(),
+            )
+          ],
+          child: const MyApp(),
+      )
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -29,13 +49,8 @@ class _MyAppState extends State<MyApp> {
         primaryColor: Colors.black,
         accentColor: Colors.black,
       ),
-      home: MultiProvider(
-        providers: [
-          ChangeNotifierProvider(
-            create: (BuildContext context) => MovieProvider(),
-          ),
-        ],
-        child: DefaultTabController(
+      home:
+        DefaultTabController(
           length: 4,
           child: Scaffold(
             body: TabBarView(
@@ -61,7 +76,6 @@ class _MyAppState extends State<MyApp> {
             ),
             bottomNavigationBar: Bottom(),
           ),
-        ),
       ),
     );
   }

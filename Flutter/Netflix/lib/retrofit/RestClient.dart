@@ -1,10 +1,9 @@
-import 'package:netflix/model/popular/popular.dart';
-import 'package:netflix/model/toprated/toprated.dart';
-import 'package:netflix/model/upcomming/upcomming.dart';
+import 'package:netflix/model/movieModel/movie.dart';
+
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart' hide Headers;
 
-import '../model/nplaying/nowplaying.dart';
+
 
 part 'RestClient.g.dart';
 
@@ -27,7 +26,7 @@ abstract class RestClient{
 
   })
   @POST('/now_playing')
-  Future<NowPlaying> getNowPlaying(
+  Future<Movie> getNowPlaying(
       @Query('api_key') String apiKey,
       @Query('language') String language,
       @Query('page') int page,
@@ -41,7 +40,7 @@ abstract class RestClient{
 
   })
   @POST('/top_rated')
-  Future<TopRated> getTopRated(
+  Future<Movie> getTopRated(
       @Query('api_key') String apiKey,
       @Query('language') String language,
       @Query('page') int page,
@@ -55,7 +54,7 @@ abstract class RestClient{
 
   })
   @POST('/popular')
-  Future<Popular> getPopular(
+  Future<Movie> getPopular(
       @Query('api_key') String apiKey,
       @Query('language') String language,
       @Query('page') int page,
@@ -68,7 +67,7 @@ abstract class RestClient{
 
   })
   @POST('/upcoming')
-  Future<Upcoming> getUpcoming(
+  Future<Movie> getUpcoming(
       @Query('api_key') String apiKey,
       @Query('language') String language,
       @Query('page') int page,
