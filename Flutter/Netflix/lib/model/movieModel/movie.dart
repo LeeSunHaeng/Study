@@ -1,7 +1,7 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'movie.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class Movie {
   List<Movies>? results;

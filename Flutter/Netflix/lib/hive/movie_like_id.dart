@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 part 'movie_like_id.g.dart';
 
 @HiveType(typeId: 0)
+
 class LikeMovies extends HiveObject {
 
   @HiveField(1)

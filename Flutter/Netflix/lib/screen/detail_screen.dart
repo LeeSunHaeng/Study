@@ -1,7 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:netflix/provider/hive_helper.dart';
 import 'package:provider/provider.dart';
 import 'package:netflix/hive/movie_like_id.dart';
@@ -29,10 +29,6 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
      var provider1 = context.watch<HiveHelper>();
-     var provider2 = context.read<HiveHelper>();
-     print(provider1.likeIdBox!.length);
-     print('가져온 ID : ${widget.movie.id.toString()}');
-     //print(provider.likeIdBox.containsKey(key))
     return Scaffold(
       body: Container(
         child: SafeArea(
@@ -61,9 +57,14 @@ class _DetailScreenState extends State<DetailScreen> {
                               children: [
                                 Container(
                                   padding: EdgeInsets.fromLTRB(0, 45, 0, 10),
-                                  child: Image.network(
-                                      'https://image.tmdb.org/t/p/original${widget.movie.poster_path}'),
                                   height: 300,
+                                  child: CachedNetworkImage(
+                                      placeholder: (context, url) => Container(
+                                          height: 60,
+                                          child: CircularProgressIndicator()),
+                                      imageUrl: 'https://image.tmdb.org/t/p/original${widget.movie.poster_path}',
+                                      errorWidget: (context, url, error) => Icon(Icons.error)
+                                      ),
                                 ),
                                 Container(
                                   padding: EdgeInsets.all(7),

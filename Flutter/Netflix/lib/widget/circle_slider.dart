@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/provider/movie_provider.dart';
@@ -75,8 +76,8 @@ List<Widget> makeCircleImages(
         child: Align(
           alignment: Alignment.centerLeft,
           child: CircleAvatar(
-            backgroundImage: NetworkImage(
-                'https://image.tmdb.org/t/p/original${movies[i].poster_path}'),
+            backgroundImage:CachedNetworkImageProvider('https://image.tmdb.org/t/p/original${movies[i].poster_path}'),
+            //NetworkImage('https://image.tmdb.org/t/p/original${movies[i].poster_path}'),
             radius: 48,
           ),
         ),

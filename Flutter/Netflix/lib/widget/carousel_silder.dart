@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -38,20 +39,21 @@ class _CarouselImageState extends State<CarouselImage> {
           Consumer2<MovieProvider, HiveHelper>(
               builder: (context, provider, provider2, widget) {
             var movies = provider.UpResultsMovies;
-            // List<MovieLikeId> likeMoviesId = [];
-            // Future.delayed(Duration(seconds: 0),(){
-            //   provider2.read().then((value) => likeMoviesId = value);
-            // });
 
             if (movies != null && movies.length > 0) {
               return Column(
                 children: [
                   CarouselSlider(
                     items: movies
-                        .map((m) => Image.network(
-                            'https://image.tmdb.org/t/p/original' +
-                                m.poster_path!))
-                        .toList(),
+                        .map((m) =>
+                      CachedNetworkImage(
+                          placeholder: (context, url) => Container(
+                            height: 60,
+                              child: CircularProgressIndicator()),
+                          imageUrl: 'https://image.tmdb.org/t/p/original' +
+                                 m.poster_path!,
+                          errorWidget: (context, url, error) => Icon(Icons.error),),).toList(),
+
                     options: CarouselOptions(onPageChanged: (index, reason) {
                       provider.changeIdx(index);
                     }),
@@ -93,7 +95,6 @@ class _CarouselImageState extends State<CarouselImage> {
                                               vote_average: movies[provider.index].vote_average
                                             ));
 
-                                        //provider2.create(movies[provider.index].id.toString(),LikeMovies(id: movies[provider.index].id.toString()));
                                       },
                                       icon: Icon(Icons.favorite_border),
                                     ),

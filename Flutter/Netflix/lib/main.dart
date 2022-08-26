@@ -4,6 +4,7 @@ import 'package:netflix/provider/hive_helper.dart';
 import 'package:netflix/hive/movie_like_id.dart';
 import 'package:netflix/provider/movie_provider.dart';
 import 'package:netflix/screen/home_screen.dart';
+import 'package:netflix/screen/like_screen.dart';
 import 'package:netflix/widget/bottom_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -62,11 +63,7 @@ class _MyAppState extends State<MyApp> {
                     child: Text('Search'),
                   ),
                 ),
-                Container(
-                  child: Center(
-                    child: Text('Save'),
-                  ),
-                ),
+                LikeScreen(),
                 Container(
                   child: Center(
                     child: Text('More'),

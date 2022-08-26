@@ -1,9 +1,6 @@
 import 'package:netflix/model/movieModel/movie.dart';
-
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart' hide Headers;
-
-
 
 part 'RestClient.g.dart';
 

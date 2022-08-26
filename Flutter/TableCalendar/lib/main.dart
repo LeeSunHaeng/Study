@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tablecalendar/calendar/mycalendar.dart';
 import 'package:tablecalendar/const/samplejson.dart';
 
 void main() {
@@ -14,62 +15,9 @@ class MyApp extends StatelessWidget {
     var data = CalendarJsonAugust;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(onPressed: (){
-                }, child: Icon(Icons.arrow_back_ios)),
-                ElevatedButton(onPressed: (){}, child: Icon(Icons.arrow_forward_ios)),
-              ],
-            ),
-            Table(
-              border: TableBorder.all(),
-              children: <TableRow>[
-
-                //Head
-                TableRow(children: CalendarHead()),
-
-                //월
-                TableRow(
-                  children: CalendarBody('월'!, data!['월']!)!,
-                ),
-
-                //화
-                TableRow(
-                  children: CalendarBody('화'!, data!['화']!)!,
-                ),
-
-                //수
-                TableRow(
-                  children: CalendarBody('수'!, data!['수']!)!,
-                ),
-
-                //목
-                TableRow(
-                  children: CalendarBody('목'!, data!['목']!)!,
-                ),
-
-                //금
-                TableRow(
-                  children: CalendarBody('금'!, data!['금']!)!,
-                ),
-
-                //토
-                TableRow(
-                  children: CalendarBody('토'!, data!['토']!)!,
-                ),
-
-                //일
-                TableRow(
-                  children: CalendarBody('일'!, data!['일']!)!,
-                ),
-              ],
-            ),
-          ],
-        ),
+      home: SafeArea(
+        top: true,
+        child: MyCalendar(),
       ),
     );
   }

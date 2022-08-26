@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tablecalendar/const/samplejson.dart';
 
 class MyCalendar extends StatefulWidget {
 
@@ -7,22 +8,47 @@ class MyCalendar extends StatefulWidget {
 
   @override
   State<MyCalendar> createState() => _MyCalendarState();
+
 }
 
+
 class _MyCalendarState extends State<MyCalendar> {
+  late int index;
+  late List<Map<String,List<Map<String,dynamic>>>> dataList;
+  late List<String> monthList;
+
+  @override
+  void initState() {
+    super.initState();
+    index = 1;
+    dataList = [CalendarJsonJuly,CalendarJsonAugust,CalendarJsonSeptember];
+    monthList = ['7월', '8월', '9월'];
+
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
         body: Column(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(onPressed: (){
+
+                  setState(() {
+                    index = (index-1)%3.abs();
+                  });
                 }, child: Icon(Icons.arrow_back_ios)),
-                ElevatedButton(onPressed: (){}, child: Icon(Icons.arrow_forward_ios)),
+
+                Text('${monthList[index]}',style: TextStyle(fontSize: 25),),
+
+                ElevatedButton(onPressed: (){
+
+                  setState(() {
+                    index = (index+1)%3.abs();
+                  });
+                }, child: Icon(Icons.arrow_forward_ios)),
               ],
             ),
             Table(
@@ -34,44 +60,44 @@ class _MyCalendarState extends State<MyCalendar> {
 
                 //월
                 TableRow(
-                  children: CalendarBody('월'!, data!['월']!)!,
+                  children: CalendarBody('월'!, dataList[index]!['월']!)!,
                 ),
 
                 //화
                 TableRow(
-                  children: CalendarBody('화'!, data!['화']!)!,
+                  children: CalendarBody('화'!, dataList[index]!['화']!)!,
                 ),
 
                 //수
                 TableRow(
-                  children: CalendarBody('수'!, data!['수']!)!,
+                  children: CalendarBody('수'!, dataList[index]!['수']!)!,
                 ),
 
                 //목
                 TableRow(
-                  children: CalendarBody('목'!, data!['목']!)!,
+                  children: CalendarBody('목'!, dataList[index]!['목']!)!,
                 ),
 
                 //금
                 TableRow(
-                  children: CalendarBody('금'!, data!['금']!)!,
+                  children: CalendarBody('금'!, dataList[index]!['금']!)!,
                 ),
 
                 //토
                 TableRow(
-                  children: CalendarBody('토'!, data!['토']!)!,
+                  children: CalendarBody('토'!, dataList[index]!['토']!)!,
                 ),
 
                 //일
                 TableRow(
-                  children: CalendarBody('일'!, data!['일']!)!,
+                  children: CalendarBody('일'!, dataList[index]!['일']!)!,
                 ),
               ],
             ),
           ],
         ),
-      ),
-    );
+      );
+
   }
 }
 
