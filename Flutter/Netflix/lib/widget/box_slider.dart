@@ -22,12 +22,12 @@ class BoxSlider extends StatelessWidget {
               child: Text('현재 상영중인 영화')),
           Consumer<MovieProvider>(
               builder: (context, provider ,widget) {
-                if(provider.NowPlayingMovies != null && provider.NowPlayingMovies.length > 0){
+                if(provider.NowPlayingMovies.results != null && provider.NowPlayingMovies.results!.length > 0){
                   return Container(
-                    height: 120,
+                    height: 160,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
-                      children: makeBoxImages(context, provider.NowPlayingMovies),
+                      children: makeBoxImages(context, provider.NowPlayingMovies.results),
                     ),
                   );
                 }
@@ -38,8 +38,8 @@ class BoxSlider extends StatelessWidget {
                       padding: EdgeInsets.only(right: 10),
                       child: CircularProgressIndicator());
                 }
-
-              })
+              }
+              )
         ],
       ),
     );
@@ -47,7 +47,7 @@ class BoxSlider extends StatelessWidget {
 }
 
 List<Widget> makeBoxImages(
-    BuildContext context, List<Movies>? movies) {
+    BuildContext context, List<Movie>? movies) {
 
   List<Widget> result = [];
   for (int i = 0; i < movies!.length; i++) {
@@ -57,7 +57,7 @@ List<Widget> makeBoxImages(
           MaterialPageRoute(
               fullscreenDialog: true,
               builder: (BuildContext context) {
-                return DetailScreen(movie: movies[i],TakeContext: context,);
+                return DetailScreen(movie: movies[i]);
               }),
         );
       },
@@ -65,14 +65,12 @@ List<Widget> makeBoxImages(
         padding: EdgeInsets.only(right: 10),
         child: Align(
             alignment: Alignment.centerLeft,
-            child:CachedNetworkImage(
-              placeholder: (context, url) => CircularProgressIndicator(),
-              imageUrl: 'https://image.tmdb.org/t/p/original${movies[i].poster_path}',
+            child:ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: CachedNetworkImage(
+                imageUrl: 'https://image.tmdb.org/t/p/original${movies[i].poster_path}',
+              ),
             )
-            // Image(
-            //   image: NetworkImage(
-            //       'https://image.tmdb.org/t/p/original${movies[i].poster_path}'),
-            // )),
       ),
     )
     )

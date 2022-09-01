@@ -29,12 +29,12 @@ class _PopBoxSliderState extends State<PopBoxSlider> {
               child: Text('인기영화')),
           Consumer<MovieProvider>(builder: (context, provider, widget) {
             var movies = provider.PopularMovies;
-            if (movies != null && movies.length > 0) {
+            if (movies.results != null && movies.results!.length > 0) {
 
               return Container(
-                height: 120,
+                height: 160,
                 child: ListView.builder(
-                    itemCount: provider.PopularMovies.length,
+                    itemCount: provider.PopularMovies.results!.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context,i){
 
@@ -44,7 +44,7 @@ class _PopBoxSliderState extends State<PopBoxSlider> {
                         MaterialPageRoute(
                             fullscreenDialog: true,
                             builder: (BuildContext context) {
-                              return DetailScreen(movie: movies[i],TakeContext: context,);
+                              return DetailScreen(movie: movies.results![i]);
                             }),
                       );
                     },
@@ -52,11 +52,15 @@ class _PopBoxSliderState extends State<PopBoxSlider> {
                       padding: EdgeInsets.only(right: 10),
                       child: Align(
                           alignment: Alignment.centerLeft,
-                          child: CachedNetworkImage(
-                            placeholder: (context, url) => CircularProgressIndicator(),
-                            imageUrl: 'https://image.tmdb.org/t/p/original${movies[i].poster_path}',
-                          )),
-                    ),
+                          child:ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: CachedNetworkImage(
+                              //placeholder: (context, url) => CircularProgressIndicator(),
+                              imageUrl: 'https://image.tmdb.org/t/p/original${movies.results![i].poster_path}',
+                            ),
+                          )
+                      ),
+                    )
                   );
                 }),
               );
@@ -75,7 +79,7 @@ class _PopBoxSliderState extends State<PopBoxSlider> {
   }
 }
 
-List<Widget> makePopBoxImages(BuildContext context, List<Movies>? movies) {
+List<Widget> makePopBoxImages(BuildContext context, List<Movie>? movies) {
   List<Widget> result = [];
   for (int i = 0; i < movies!.length; i++) {
     result.add(InkWell(
@@ -84,19 +88,23 @@ List<Widget> makePopBoxImages(BuildContext context, List<Movies>? movies) {
           MaterialPageRoute(
               fullscreenDialog: true,
               builder: (BuildContext context) {
-                return DetailScreen(movie: movies[i],TakeContext: context,);
+                return DetailScreen(movie: movies[i]);
               }),
         );
       },
-      child: Container(
-        padding: EdgeInsets.only(right: 10),
-        child: Align(
-            alignment: Alignment.centerLeft,
-            child: Image(
-              image: NetworkImage(
-                  'https://image.tmdb.org/t/p/original${movies[i].poster_path}'),
-            )),
-      ),
+        child: Container(
+          padding: EdgeInsets.only(right: 10),
+          child: Align(
+              alignment: Alignment.centerLeft,
+              child:ClipRRect(
+                borderRadius: BorderRadius.circular(10.0),
+                child: CachedNetworkImage(
+                  //placeholder: (context, url) => CircularProgressIndicator(),
+                  imageUrl: 'https://image.tmdb.org/t/p/original${movies[i].poster_path}',
+                ),
+              )
+          ),
+        )
     ));
   }
   return result;

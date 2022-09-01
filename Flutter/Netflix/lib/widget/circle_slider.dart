@@ -36,12 +36,12 @@ class _CircleSliderState extends State<CircleSlider> {
           Text('영화 순위'),
           Consumer<MovieProvider>(builder: (context, provider, widget) {
             var movies = provider.TopRatedMovies;
-            if (movies != null && movies.length > 0) {
+            if (movies.results != null && movies.results!.length > 0) {
               return Container(
                   height: 120,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    children: makeCircleImages(context, movies),
+                    children: makeCircleImages(context, movies.results!),
                   ));
             } else {
               return Container(
@@ -58,7 +58,7 @@ class _CircleSliderState extends State<CircleSlider> {
 }
 
 List<Widget> makeCircleImages(
-    BuildContext context, List<Movies>? movies) {
+    BuildContext context, List<Movie>? movies) {
   List<Widget> result = [];
   for (int i = 0; i < movies!.length; i++) {
     result.add(InkWell(
@@ -67,7 +67,7 @@ List<Widget> makeCircleImages(
           MaterialPageRoute(
               fullscreenDialog: true,
               builder: (BuildContext context) {
-                return DetailScreen(movie: movies[i],TakeContext: context,);
+                return DetailScreen(movie: movies[i]);
               }),
         );
       },
@@ -78,7 +78,7 @@ List<Widget> makeCircleImages(
           child: CircleAvatar(
             backgroundImage:CachedNetworkImageProvider('https://image.tmdb.org/t/p/original${movies[i].poster_path}'),
             //NetworkImage('https://image.tmdb.org/t/p/original${movies[i].poster_path}'),
-            radius: 48,
+            radius: 55,
           ),
         ),
       ),

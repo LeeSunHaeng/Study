@@ -1,48 +1,36 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
+import 'package:netflix/model/movieModel/movie.dart';
 
-import '../hive/movie_like_id.dart';
 
-const String LikeMovie = 'LIKE_MOVIE';
+const String movie = 'LIKE_MOVIE';
 
 class HiveHelper extends ChangeNotifier{
-  int count = 0;
+
   static final HiveHelper _singleton = HiveHelper._internal();
-  static Future<List<LikeMovies>> likeMovies = HiveHelper().read();
+
   factory HiveHelper(){
     return _singleton;
   }
   HiveHelper._internal();
 
-  Box<LikeMovies>? likeIdBox;
+  Box<Movie>? likeIdBox;
 
   Future openBox() async{
-    likeIdBox = await Hive.openBox(LikeMovie);
+    likeIdBox = await Hive.openBox(movie);
   }
-
-  void plus() {
-    count++;
-    notifyListeners();
-  }
-  void minus() {
-    count--;
-    notifyListeners();
-  }
-
 
   void clear(){
     notifyListeners();
   }
 
-  Future create(String id,LikeMovies movieId)async{
+  Future create(String id,Movie movieId)async{
     var result = likeIdBox!.put(id, movieId);
-    print(';');
     notifyListeners();
     return result;
   }
 
-  Future<List<LikeMovies>> read() async {
+  Future<List<Movie>> read() async {
     var result = likeIdBox!.values.toList();
     notifyListeners();
     return result;

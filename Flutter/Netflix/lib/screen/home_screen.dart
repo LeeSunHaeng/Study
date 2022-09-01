@@ -5,10 +5,7 @@ import 'package:netflix/widget/box_slider.dart';
 import 'package:netflix/widget/carousel_silder.dart';
 import 'package:netflix/widget/circle_slider.dart';
 import 'package:netflix/widget/pop_box_slider.dart';
-import 'package:provider/provider.dart';
 
-import '../provider/hive_helper.dart';
-import '../provider/movie_provider.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -19,35 +16,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late MovieProvider _movieProvider;
-  late HiveHelper _hiveHelper;
 
   @override
   void initState() {
     super.initState();
 
-    _movieProvider = context.read<MovieProvider>();
-    _hiveHelper = context.read<HiveHelper>();
-    // _movieProvider = Provider.of<MovieProvider>(context, listen: false);
-    // _hiveHelper = Provider.of<HiveHelper>(context,listen: false);
-    _movieProvider.getMovie();
-
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Stack(
-          children: [
-            CarouselImage(),
-            TopBar(),
-          ],
-        ),
-        CircleSlider(),
-        BoxSlider(),
-        PopBoxSlider(),
-      ],
+
+    return Container(
+      margin: EdgeInsets.only(top: 40),
+      child: ListView(
+        children: const [
+          CarouselImage(),
+          CircleSlider(),
+          BoxSlider(),
+          PopBoxSlider(),
+        ],
+      ),
     );
   }
 }

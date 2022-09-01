@@ -1,32 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:netflix/provider/hive_helper.dart';
-import 'package:netflix/hive/movie_like_id.dart';
 import 'package:netflix/provider/movie_provider.dart';
+import 'package:netflix/provider/movie_search_provider.dart';
+import 'package:netflix/provider/movie_similar_provider.dart';
 import 'package:netflix/screen/home_screen.dart';
 import 'package:netflix/screen/like_screen.dart';
+import 'package:netflix/screen/search_screen.dart';
 import 'package:netflix/widget/bottom_bar.dart';
 import 'package:provider/provider.dart';
 
+import 'model/movieModel/movie.dart';
 
-void main() async{
+void main() async {
   await Hive.initFlutter();
-  Hive.registerAdapter(LikeMoviesAdapter());
+  Hive.registerAdapter(MovieAdapter());
   await HiveHelper().openBox();
 
-  runApp(
-      MultiProvider(
-          providers: [
-            ChangeNotifierProvider(
-              create: (BuildContext context) => MovieProvider(),
-            ),
-            ChangeNotifierProvider(
-              create: (BuildContext context) => HiveHelper(),
-            )
-          ],
-          child: const MyApp(),
-      )
-  );
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (BuildContext context) => MovieProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (BuildContext context) => HiveHelper(),
+      ),
+      ChangeNotifierProvider(
+          create: (BuildContext context) => MovieSearchProvider()
+      ),
+      ChangeNotifierProvider(
+          create: (BuildContext context) => MovieSimilarProvider()
+      ),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -41,7 +48,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'NetFlix',
@@ -50,29 +56,32 @@ class _MyAppState extends State<MyApp> {
         primaryColor: Colors.black,
         accentColor: Colors.black,
       ),
-      home:
-        DefaultTabController(
-          length: 4,
+      home: DefaultTabController(
+        length: 4,
+        child: SafeArea(
+          top: true,
           child: Scaffold(
-            body: TabBarView(
-              physics: NeverScrollableScrollPhysics(),
-              children: <Widget>[
-                HomeScreen(),
-                Container(
-                  child: Center(
-                    child: Text('Search'),
-                  ),
-                ),
-                LikeScreen(),
-                Container(
-                  child: Center(
-                    child: Text('More'),
-                  ),
+            body: Stack(
+              children: [
+                TopBar(),
+                TabBarView(
+                  physics: NeverScrollableScrollPhysics(),
+                  children: <Widget>[
+                    HomeScreen(),
+                    SearchScreen(),
+                    LikeScreen(),
+                    Container(
+                      child: Center(
+                        child: Text('More'),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
             bottomNavigationBar: Bottom(),
           ),
+        ),
       ),
     );
   }

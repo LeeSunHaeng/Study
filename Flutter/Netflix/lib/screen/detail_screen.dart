@@ -3,17 +3,18 @@ import 'package:flutter/cupertino.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:netflix/provider/hive_helper.dart';
+import 'package:netflix/provider/movie_provider.dart';
+import 'package:netflix/provider/movie_similar_provider.dart';
+import 'package:netflix/retrofit/RestClient.dart';
 import 'package:provider/provider.dart';
-import 'package:netflix/hive/movie_like_id.dart';
 import 'package:netflix/model/movieModel/movie.dart';
 
 
+
 class DetailScreen extends StatefulWidget {
-  final Movies movie;
-  final BuildContext TakeContext;
-  const DetailScreen({required this.movie, required this.TakeContext, Key? key}) : super(key: key);
-
-
+  final Movie movie;
+  const DetailScreen({required this.movie, Key? key}) : super(key: key);
+  
   @override
   State<DetailScreen> createState() => _DetailScreenState();
 }
@@ -21,14 +22,16 @@ class DetailScreen extends StatefulWidget {
 class _DetailScreenState extends State<DetailScreen> {
   bool like = false;
   @override
-
   void initState() {
     super.initState();
+
   }
 
   @override
   Widget build(BuildContext context) {
-     var provider1 = context.watch<HiveHelper>();
+    final _provider = Provider.of<MovieSimilarProvider>(context,listen:false);
+    _provider.getSimilarMovies(widget.movie.id!);
+
     return Scaffold(
       body: Container(
         child: SafeArea(
@@ -41,8 +44,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     width: double.maxFinite,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                      image: NetworkImage(
-                          "https://image.tmdb.org/t/p/original${widget.movie.poster_path}"),
+                      image: CachedNetworkImageProvider( "https://image.tmdb.org/t/p/original${widget.movie.poster_path}"),
                       fit: BoxFit.cover,
                     )),
                     //실제 이미지
@@ -113,15 +115,6 @@ class _DetailScreenState extends State<DetailScreen> {
                                   child:
                                       Text('평점 : ${widget.movie.vote_average}'),
                                 ),
-                                // Container(
-                                //   padding: EdgeInsets.all(5),
-                                //   alignment: Alignment.centerLeft,
-                                //   child: Text(
-                                //     '출연: 현빈, 손예진, 서지혜\n제작자: 이정훈, 박지은',
-                                //     style: TextStyle(
-                                //         color: Colors.white60, fontSize: 12),
-                                //   ),
-                                // ),
                               ],
                             ),
                           ),
@@ -139,57 +132,60 @@ class _DetailScreenState extends State<DetailScreen> {
               Container(
                     color: Colors.black26,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Container(
-                          padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                          child: InkWell(
-                            onTap: () {},
-                            child: Column(
-                              children: [
-                            provider1.likeIdBox!.containsKey(widget.movie.id.toString())
-                                ? IconButton(
-                              icon: Icon(Icons.favorite),
-                              onPressed: () {
-                                provider1.delete(widget.movie.id.toString());
-                              },
-                            )
-                                : IconButton(
-                                    onPressed: () {
-                                    provider1.create(
-                                        widget.movie.id.toString(),
-                                        LikeMovies(
-                                          id: widget.movie.id,
-                                          overview: widget.movie.overview,
-                                          poster_path:widget.movie.poster_path,
-                                          release_date: widget.movie.release_date,
-                                          title: widget.movie.title,
-                                          vote_average: widget.movie.vote_average,
-                                        ));
-                                    print('들어가냐? : ${provider1.likeIdBox!.containsKey(widget.movie.id.toString())}');
+                        Consumer<HiveHelper>(
+                          builder: (context, provider1, widget2){
+                            return Container(
+                              padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+                              child: InkWell(
+                                onTap: () {},
+                                child: Column(
+                                  children: [
+                                    provider1.likeIdBox!.containsKey(widget.movie.id.toString())
+                                        ? IconButton(
+                                      icon: Icon(Icons.favorite),
+                                      onPressed: () {
+                                        provider1.delete(widget.movie.id.toString());
+                                      },
+                                    )
+                                        : IconButton(
+                                            onPressed: () {
+                                              provider1.create(
+                                                  widget.movie.id.toString(),
+                                                  Movie(
+                                                    id: widget.movie.id,
+                                                    overview: widget.movie.overview,
+                                                    poster_path:widget.movie.poster_path,
+                                                    release_date: widget.movie.release_date,
+                                                    title: widget.movie.title,
+                                                    vote_average: widget.movie.vote_average,
+                                                  ));
 
-                                    //provider2.create(movies[provider.index].id.toString(),LikeMovies(id: movies[provider.index].id.toString()));
-                                  },
-                                    icon: Icon(Icons.favorite_border),
-                            ),
-                                Text(
-                                  '내가 찜한 콘텐츠',
-                                  style: TextStyle(
-                                      fontSize: 11, color: Colors.white60),
-                                )
-                              ],
-                            ),
-                          ),
+                                            },
+                                          icon: Icon(Icons.favorite_border),
+                                    ),
+                                    const Text(
+                                      '내가 찜한 콘텐츠',
+                                      style: TextStyle(
+                                          fontSize: 11, color: Colors.white60),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+
                         ),
                         Container(
-                          padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                          padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
                           child: Container(
                             child: Column(
-                              children: [
-                                Icon(Icons.thumb_up),
-                                Padding(
-                                  padding: EdgeInsets.all(5),
-                                ),
+                              children:  [
+                                IconButton(
+                                  onPressed: (){},
+                                    icon : Icon(Icons.thumb_up)),
+
                                 Text(
                                   '평가',
                                   style: TextStyle(
@@ -200,14 +196,13 @@ class _DetailScreenState extends State<DetailScreen> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                          padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
                           child: Container(
                             child: Column(
-                              children: [
-                                Icon(Icons.share),
-                                Padding(
-                                  padding: EdgeInsets.all(5),
-                                ),
+                              children:  [
+                                IconButton(onPressed: (){
+                                }, icon: Icon(Icons.share)),
+
                                 Text(
                                   '공유',
                                   style: TextStyle(
@@ -227,21 +222,111 @@ class _DetailScreenState extends State<DetailScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Container(
-                      child: Text(
-                        '줄거리',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600, color: Colors.grey.shade400),
-                      ),
-                      padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
+                      padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
+                      child: Text('${widget.movie.overview}',style: TextStyle(color : Colors.grey.shade400),),
                     ),
-                    Text('${widget.movie.overview}'),
+
                   ],
                 ),
-              )
+              ),
+              Container(
+                padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
+                child: Text(
+                  '다른 비슷한 컨텐츠',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600,),
+                ),
+              ),
+              // FutureBuilder<Movies>(
+              //   future: RestClient.create().getSimilar(widget.movie.id!,'ce16f7da30a47ba16d9f038d895318bd','ko-KR'),
+              //     builder: (BuildContext context, snapshot){
+              //     if(snapshot.hasData){
+              //       return Container(
+              //         //padding: EdgeInsets.all(5),
+              //         //height: MediaQuery.of(context).size.height-25,
+              //         height: 500,
+              //         child: GridView.count(
+              //           crossAxisCount: 3,
+              //           childAspectRatio: 1/1.618,
+              //           mainAxisSpacing: 0,
+              //           crossAxisSpacing: 0,
+              //           children: makeSimilarImages(context, snapshot.data!.results),
+              //         ),
+              //       );
+              //     }
+              //     else{
+              //     return Container(
+              //         height: 80,
+              //         width: 80,
+              //         padding: EdgeInsets.only(right: 10),
+              //         child: CircularProgressIndicator());
+              //   }
+              // })
+
+
+
+              Consumer<MovieSimilarProvider>(
+                  builder: (context, provider, widget2){
+
+                if(provider.SimilarMovies.results != null){
+                  return Container(
+                              //padding: EdgeInsets.all(5),
+                              //height: MediaQuery.of(context).size.height-25,
+                              height: 500,
+                              child: GridView.count(
+                                crossAxisCount: 3,
+                                childAspectRatio: 1/1.618,
+                                // mainAxisSpacing: 0,
+                                // crossAxisSpacing: 0,
+                                children: makeSimilarImages(context, provider.SimilarMovies.results),
+                              ),
+                            );
+                }else{
+                      return Container(
+                              height: 80,
+                              width: 80,
+                              padding: EdgeInsets.only(right: 10),
+                              child: CircularProgressIndicator());
+                      }
+              })
+
+
             ],
           ),
         ),
       ),
     );
   }
+}
+
+List<Widget> makeSimilarImages(
+    BuildContext context, List<Movie>? movies) {
+
+  List<Widget> result = [];
+  for (int i = 0; i < movies!.length; i++) {
+    result.add(InkWell(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+                fullscreenDialog: true,
+                builder: (BuildContext context) {
+                  return DetailScreen(movie: movies[i]);
+                }),
+          );
+        },
+        child: Container(
+          padding: EdgeInsets.all(5),
+              child:ClipRRect(
+                borderRadius: BorderRadius.circular(10.0),
+                child: CachedNetworkImage(
+                  //placeholder: (context, url) => CircularProgressIndicator(),
+                  imageUrl: 'https://image.tmdb.org/t/p/original${movies[i].poster_path}',
+                  fit: BoxFit.cover,
+                ),
+              )
+        )
+    )
+    );
+  }
+  return result;
 }

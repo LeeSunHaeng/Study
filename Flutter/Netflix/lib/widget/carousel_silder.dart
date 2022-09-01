@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:netflix/model/movieModel/movie.dart';
 import 'package:netflix/provider/hive_helper.dart';
-import 'package:netflix/hive/movie_like_id.dart';
 import 'package:netflix/provider/movie_provider.dart';
 import 'package:netflix/screen/detail_screen.dart';
 import 'package:provider/provider.dart';
@@ -17,13 +17,7 @@ class CarouselImage extends StatefulWidget {
 
 class _CarouselImageState extends State<CarouselImage> {
   late List<bool> likes;
-  //
 
-  @override
-  void initState() {
-    super.initState();
-    //provider.index = 0;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,25 +25,21 @@ class _CarouselImageState extends State<CarouselImage> {
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(20),
-          ),
-          Container(
               margin: EdgeInsets.only(bottom: 10.0),
               child: Text('COMING SOON')),
           Consumer2<MovieProvider, HiveHelper>(
               builder: (context, provider, provider2, widget) {
             var movies = provider.UpResultsMovies;
-
-            if (movies != null && movies.length > 0) {
+            if (movies.results != null) {
               return Column(
                 children: [
                   CarouselSlider(
-                    items: movies
+                    items: movies.results!
                         .map((m) =>
                       CachedNetworkImage(
-                          placeholder: (context, url) => Container(
-                            height: 60,
-                              child: CircularProgressIndicator()),
+                          // placeholder: (context, url) => Container(
+                          //   height: 60,
+                          //     child: CircularProgressIndicator()),
                           imageUrl: 'https://image.tmdb.org/t/p/original' +
                                  m.poster_path!,
                           errorWidget: (context, url, error) => Icon(Icons.error),),).toList(),
@@ -61,7 +51,7 @@ class _CarouselImageState extends State<CarouselImage> {
                   Container(
                     padding: EdgeInsets.fromLTRB(0, 10, 0, 3),
                     child: Text(
-                      movies[provider.index].title!,
+                      movies.results![provider.index].title!,
                       style: TextStyle(fontSize: 11),
                     ),
                   ),
@@ -73,11 +63,11 @@ class _CarouselImageState extends State<CarouselImage> {
                           child: Column(
                             children: [
                               provider2.likeIdBox!.containsKey(
-                                      '${movies[provider.index].id.toString()}')
+                                      '${movies.results![provider.index].id.toString()}')
                                   ? IconButton(
                                       icon: Icon(Icons.favorite),
                                       onPressed: () {
-                                        provider2.delete(movies[provider.index]
+                                        provider2.delete(movies.results![provider.index]
                                             .id
                                             .toString());
                                       },
@@ -85,14 +75,14 @@ class _CarouselImageState extends State<CarouselImage> {
                                   : IconButton(
                                       onPressed: () {
                                         provider2.create(
-                                            movies[provider.index].id.toString(),
-                                            LikeMovies(
-                                              id: movies[provider.index].id,
-                                              overview: movies[provider.index].overview,
-                                              poster_path:movies[provider.index].poster_path,
-                                              release_date: movies[provider.index].release_date,
-                                              title: movies[provider.index].title,
-                                              vote_average: movies[provider.index].vote_average
+                                            movies.results![provider.index].id.toString(),
+                                            Movie(
+                                              id: movies.results![provider.index].id,
+                                              overview: movies.results![provider.index].overview,
+                                              poster_path:movies.results![provider.index].poster_path,
+                                              release_date: movies.results![provider.index].release_date,
+                                              title: movies.results![provider.index].title,
+                                              vote_average: movies.results![provider.index].vote_average
                                             ));
 
                                       },
@@ -138,7 +128,7 @@ class _CarouselImageState extends State<CarouselImage> {
                                           fullscreenDialog: true,
                                           builder: (BuildContext context) {
                                             return DetailScreen(
-                                                movie: movies[provider.index],TakeContext: context,);
+                                                movie: movies.results![provider.index]);
                                           }),
                                     );
                                   },
@@ -156,7 +146,7 @@ class _CarouselImageState extends State<CarouselImage> {
                   Container(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: makeIndicator(movies, provider.index),
+                      children: makeIndicator(movies.results!, provider.index),
                     ),
                   )
                 ],
