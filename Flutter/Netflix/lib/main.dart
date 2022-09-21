@@ -4,6 +4,7 @@ import 'package:netflix/provider/hive_helper.dart';
 import 'package:netflix/provider/movie_provider.dart';
 import 'package:netflix/provider/movie_search_provider.dart';
 import 'package:netflix/provider/movie_similar_provider.dart';
+import 'package:netflix/screen/custom_search_screen.dart';
 import 'package:netflix/screen/home_screen.dart';
 import 'package:netflix/screen/like_screen.dart';
 import 'package:netflix/screen/search_screen.dart';
@@ -68,7 +69,8 @@ class _MyAppState extends State<MyApp> {
                   physics: NeverScrollableScrollPhysics(),
                   children: <Widget>[
                     HomeScreen(),
-                    SearchScreen(),
+                    //SearchScreen(),
+                    CustomSearchScreen(),
                     LikeScreen(),
                     Container(
                       child: Center(

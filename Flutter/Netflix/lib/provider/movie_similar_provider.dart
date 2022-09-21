@@ -10,7 +10,7 @@ class MovieSimilarProvider extends ChangeNotifier{
 
   Future<void> getSimilarMovies(int movieId) async {
     _SimilarMovies =  await RestClient.create()
-        .getSimilar(movieId,'ce16f7da30a47ba16d9f038d895318bd','ko-KR');
+        .getSimilar(movieId,'ce16f7da30a47ba16d9f038d895318bd','ko-KR  ');
     notifyListeners();
   }
 }
